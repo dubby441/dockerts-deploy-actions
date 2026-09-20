@@ -39,7 +39,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://biodata:biodata@db:5432/biodata}
+      DATABASE_URL: "postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}"
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
     # Migrate, then serve. `alembic upgrade head` is a no-op when the schema is
